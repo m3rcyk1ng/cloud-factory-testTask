@@ -10,4 +10,5 @@ export const THEME = {
   primaryDim: '#4874c7',
   background: '#13132F',
   backgroundVariant: '#2c2c6c',
+  black: '#000',
 };
