@@ -1,0 +1,42 @@
+@import url(assets/fonts/fonts.css);
+
+body {
+  background: var(--color-bg);
+  color: var(--color-white);
+  line-height: 1.7;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-rendering: optimizeLegibility;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #13132F;
+  --color-bg-variant: #2c2c6c;
+  --color-primary: #4db5ff;
+  --color-primary-variant: rgba(77, 181, 255, 0.4);
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --color-orange: #ffa500;
+  --danger-color: #F25454;
+  --danger-color-hover: #f31f1f;
+  --large-fs: 20px;
+  --default-fs: 18px;
+  --small-fs: 14px;
+  --transition: all 400ms ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
