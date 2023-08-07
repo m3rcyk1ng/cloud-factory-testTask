@@ -6,7 +6,7 @@ export const ButtonGroup = styled.div`
   margin-bottom: 30px;
 `;
 
-export const Tab = styled.button<{active: boolean}>`
+export const Tab = styled.button<{ active: boolean }>`
   font-size: 20px;
   padding: 10px 60px;
   min-width: 200px;

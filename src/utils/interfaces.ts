@@ -8,4 +8,5 @@ export interface IQuote {
   high: string;
   amount: string;
   markPrice: string;
+  symbol: string;
 }

@@ -26,7 +26,7 @@ export const StyledTd = styled.td`
   padding: 10px 0;
   text-align: center;
   width: 292px;
-  color: ${(props) => props.theme.background };
+  color: ${(props) => props.theme.background};
 `;
 
 export const StyledTr = styled.tr`
@@ -36,7 +36,7 @@ export const StyledTr = styled.tr`
     background-color: ${(props) => props.theme.primaryVariant};
     cursor: pointer;
   }
-`
+`;
 
 export const StyledThead = styled.thead`
   font-size: 20px;
@@ -44,5 +44,3 @@ export const StyledThead = styled.thead`
   font-weight: 700;
   box-shadow: rgb(31 31 31 / 15%) 0 4px 20px -2px;
 `;
-
-

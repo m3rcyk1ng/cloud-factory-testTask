@@ -6,7 +6,7 @@ import {
   CloseBtn,
   AlertImg,
 } from './CoursesPage.styles';
-import Preloader from '../../assets/images/Preloader.svg'
+import Preloader from '../../assets/images/Preloader.svg';
 import { mainApi } from '../../utils/Api';
 import { IQuote, QuoteName } from '../../utils/interfaces';
 import { TEXT } from '../../utils/Text';
@@ -19,7 +19,7 @@ import { getPriceChange } from '../../utils/helpers';
 export const CoursesPage: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState('BTC');
   const [isDataLoading, setIsDataLoading] = useState(true);
-  const [actualData, setActualData] = useState([]);
+  const [actualData, setActualData] = useState<IQuote[]>([]);
   const [showInformationDialog, setShowInformationDialog] = useState({
     showDialog: false,
     name: '',
@@ -35,58 +35,47 @@ export const CoursesPage: FunctionComponent = () => {
   const isShowInformationDialogOpen = showInformationDialog.showDialog;
   const isShowErrorDialogOpen = showErrorDialog.showDialog;
 
-  useEffect(() => {
-    let queryInterval: NodeJS.Timer;
-    if (activeTab === QuoteName.BTC && !isShowInformationDialogOpen && !isShowErrorDialogOpen) {
-      queryInterval = setTimeout(getFirstApiData, 5000);
-    }
-    if (activeTab === QuoteName.USDT && !isShowInformationDialogOpen && !isShowErrorDialogOpen) {
-      queryInterval = setTimeout(getSecondApiData, 5000);
-    }
-    return () => {
-      clearTimeout(queryInterval);
-    };
-  }, [activeTab, actualData, isShowErrorDialogOpen, isShowInformationDialogOpen, showInformationDialog]);
-
-  function getFirstApiData () {
+  function getFirstApiData() {
     mainApi
       .getData()
-      .then((res: any[]) => {
+      .then((res: IQuote[]) => {
         if (res) {
           setIsDataLoading(false);
-          setShowErrorDialog({showDialog: false, message: '', title: ''})
-          const filteredData = res.reduce((acc, item) => {
+          setShowErrorDialog({ showDialog: false, message: '', title: '' });
+          const filteredData = res.reduce((acc: IQuote[], item) => {
             if (item.symbol.includes(QuoteName.BTC)) acc.push(item);
             return acc;
-          }, [])
+          }, []);
           setActualData(filteredData);
         }
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.log(`Ошибка: ${err}`);
         setShowErrorDialog({
           showDialog: true,
           title: TEXT.ERROR,
           message: TEXT.QUERY_ERROR_TEXT,
         });
-      })
+      });
   }
 
   function getSecondApiData() {
     mainApi
       .getSecondData()
-      .then((res: any[]) => {
+      .then((res: IQuote[]) => {
         if (res) {
           setIsDataLoading(false);
-          setShowErrorDialog({showDialog: false, message: '', title: ''})
-          const filteredData = res.reduce((acc, item) => {
+          setShowErrorDialog({ showDialog: false, message: '', title: '' });
+          const filteredData = res.reduce((acc: IQuote[], item) => {
             if (item.symbol.includes(QuoteName.USDT)) acc.push(item);
             return acc;
-          }, [])
+          }, []);
           setActualData(filteredData);
         }
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.log(`Ошибка: ${err}`);
         setShowErrorDialog({
           showDialog: true,
@@ -107,8 +96,8 @@ export const CoursesPage: FunctionComponent = () => {
       setShowErrorDialog({
         title: '',
         message: '',
-        showDialog: false
-      })
+        showDialog: false,
+      });
     if (isShowInformationDialogOpen)
       setShowInformationDialog({
         showDialog: false,
@@ -116,7 +105,7 @@ export const CoursesPage: FunctionComponent = () => {
         highPrice: 0,
         marketPrice: 0,
         priceChange: 0,
-      })
+      });
   }
 
   function handleOpenQuoteInformation(name: string) {
@@ -128,20 +117,39 @@ export const CoursesPage: FunctionComponent = () => {
           highPrice: Number(high),
           marketPrice: Number(markPrice),
           priceChange: getPriceChange(Number(high), Number(markPrice)),
-        }
+        };
         setShowInformationDialog({ showDialog: true, ...quoteData });
       }
       return null;
-    })
+    });
   }
+
+  useEffect(() => {
+    let queryInterval: NodeJS.Timer;
+    if (activeTab === QuoteName.BTC && !isShowInformationDialogOpen && !isShowErrorDialogOpen) {
+      queryInterval = setTimeout(getFirstApiData, 5000);
+    }
+    if (activeTab === QuoteName.USDT && !isShowInformationDialogOpen && !isShowErrorDialogOpen) {
+      queryInterval = setTimeout(getSecondApiData, 5000);
+    }
+    return () => {
+      clearTimeout(queryInterval);
+    };
+  }, [
+    activeTab,
+    actualData,
+    isShowErrorDialogOpen,
+    isShowInformationDialogOpen,
+    showInformationDialog,
+  ]);
 
   const renderErrorDialogContent = () => (
     <>
-      <AlertImg src={AlertIcon}/>
+      <AlertImg src={AlertIcon} />
       <MessageDialogMessage>{showErrorDialog.message}</MessageDialogMessage>
       <CloseBtn onClick={handleCloseBtnClick}>{TEXT.CLOSE}</CloseBtn>
     </>
-  )
+  );
 
   const renderQuoteInformation = () => (
     <>
@@ -150,7 +158,7 @@ export const CoursesPage: FunctionComponent = () => {
       <MessageDialogMessage>{`${TEXT.PRICE_CHANGE}: ${showInformationDialog.priceChange}%`}</MessageDialogMessage>
       <CloseBtn onClick={handleCloseBtnClick}>{TEXT.CLOSE}</CloseBtn>
     </>
-  )
+  );
 
   const renderPageDialogs = () => {
     if (isShowErrorDialogOpen) {
@@ -160,7 +168,7 @@ export const CoursesPage: FunctionComponent = () => {
           title={`${showErrorDialog.title}!`}
           renderContent={renderErrorDialogContent()}
         />
-      )
+      );
     }
     if (isShowInformationDialogOpen) {
       return (
@@ -169,17 +177,20 @@ export const CoursesPage: FunctionComponent = () => {
           title={showInformationDialog.name}
           renderContent={renderQuoteInformation()}
         />
-      )
+      );
     }
-  }
+    return null;
+  };
 
   return (
     <>
       <CoursesPageWrapper>
-        <TabList actualTab={(tab) => handleSetActiveTab(tab)}/>
-        {isDataLoading && !isShowErrorDialogOpen ? <PreloaderWrapper src={Preloader} /> :
-          <Table data={actualData} selectedQuote={handleOpenQuoteInformation}/>
-        }
+        <TabList actualTab={(tab) => handleSetActiveTab(tab)} />
+        {isDataLoading && !isShowErrorDialogOpen ? (
+          <PreloaderWrapper src={Preloader} />
+        ) : (
+          <Table data={actualData} selectedQuote={handleOpenQuoteInformation} />
+        )}
       </CoursesPageWrapper>
       {renderPageDialogs()}
     </>

@@ -2,7 +2,9 @@ import React, { FunctionComponent, useState } from 'react';
 import { ButtonGroup, Tab } from './TabList.styles';
 import { TABS } from './TabList.constants';
 
-export const TabList: FunctionComponent<{ actualTab: (actualTab: string) => void }> = ({ actualTab }) => {
+export const TabList: FunctionComponent<{ actualTab: (actualTab: string) => void }> = ({
+  actualTab,
+}) => {
   const [activeTab, setActiveTab] = useState(TABS[0]);
 
   function handleSetActiveTab(tab: string) {
@@ -12,12 +14,8 @@ export const TabList: FunctionComponent<{ actualTab: (actualTab: string) => void
 
   return (
     <ButtonGroup>
-      {TABS.map(tab => (
-        <Tab
-          key={tab}
-          active={activeTab === tab}
-          onClick={() => handleSetActiveTab(tab)}
-        >
+      {TABS.map((tab) => (
+        <Tab key={tab} active={activeTab === tab} onClick={() => handleSetActiveTab(tab)}>
           {tab}
         </Tab>
       ))}

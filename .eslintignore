@@ -1,0 +1,8 @@
+**/node_modules/**
+**/dist/*
+**/*.d.ts
+.env
+**/config/**
+**/scripts/**
+**/webpack*
+**/storybook-static/**

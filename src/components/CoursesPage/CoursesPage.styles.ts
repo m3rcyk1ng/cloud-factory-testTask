@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import logo from "../../assets/images/logo.svg";
+import styled from 'styled-components';
+import logo from '../../assets/images/logo.svg';
 
 export const CoursesPageWrapper = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const CoursesPageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 48px 0;
-`
+`;
 
 export const HeaderWrapper = styled.div`
   width: 1280px;
@@ -55,7 +55,8 @@ export const CloseBtn = styled.div`
   background-color: ${(props) => props.theme.danger};
   border-radius: 0.5rem;
   user-select: none;
-  transition: .3s;
+  transition: 0.3s;
+
   &:hover {
     cursor: pointer;
     background-color: ${(props) => props.theme.dangerHover};

@@ -1,4 +1,4 @@
-  export const THEME = {
+export const THEME = {
   white: '#FFF',
   orange: '#FFA500',
   green: '#0EA600',
