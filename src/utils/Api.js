@@ -29,6 +29,6 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  url: 'https://api.apoloniex.com',
+  url: 'https://api.poloniex.com',
   credentials: 'includes',
 });
