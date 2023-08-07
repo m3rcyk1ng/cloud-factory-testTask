@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import { ButtonGroup, Tab } from './TabList.styles';
-import { QuoteName } from '../../utils/interfaces';
+import { TABS } from './TabList.constants';
 
 export const TabList: FunctionComponent<{ actualTab: (actualTab: string) => void }> = ({ actualTab }) => {
-  const tabs: string[] = [QuoteName.BTC, QuoteName.USDT];
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [activeTab, setActiveTab] = useState(TABS[0]);
 
   function handleSetActiveTab(tab: string) {
     setActiveTab(tab);
@@ -13,7 +12,7 @@ export const TabList: FunctionComponent<{ actualTab: (actualTab: string) => void
 
   return (
     <ButtonGroup>
-      {tabs.map(tab => (
+      {TABS.map(tab => (
         <Tab
           key={tab}
           active={activeTab === tab}

@@ -17,14 +17,7 @@ body {
 
 :root {
   --color-bg: #13132F;
-  --color-bg-variant: #2c2c6c;
-  --color-primary: #4db5ff;
-  --color-primary-variant: rgba(77, 181, 255, 0.4);
   --color-white: #fff;
-  --color-light: rgba(255, 255, 255, 0.6);
-  --color-orange: #ffa500;
-  --danger-color: #F25454;
-  --danger-color-hover: #f31f1f;
   --large-fs: 20px;
   --default-fs: 18px;
   --small-fs: 14px;

@@ -1,6 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
-import Table from '../Table/Table';
-import TabList from '../TabList/TabList';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import {
   CoursesPageWrapper,
   PreloaderWrapper,
@@ -9,12 +7,14 @@ import {
   AlertImg,
 } from './CoursesPage.styles';
 import Preloader from '../../assets/images/Preloader.svg'
-import {mainApi} from '../../utils/Api';
-import {IQuote, QuoteName} from '../../utils/interfaces';
-import {TEXT} from '../../utils/Text';
-import MessageDialog from '../MessageDialog/MessageDialog';
+import { mainApi } from '../../utils/Api';
+import { IQuote, QuoteName } from '../../utils/interfaces';
+import { TEXT } from '../../utils/Text';
 import AlertIcon from '../../assets/images/alert-circle.svg';
-import {getPriceChange} from '../../utils/helpers/getPriceChange';
+import { TabList } from '../TabList';
+import { Table } from '../Table';
+import { MessageDialog } from '../MessageDialog';
+import { getPriceChange } from '../../utils/helpers';
 
 export const CoursesPage: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState('BTC');

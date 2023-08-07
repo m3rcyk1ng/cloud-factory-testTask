@@ -8,13 +8,13 @@ export const TableSection = styled.table`
   table-layout: fixed;
   border-collapse: collapse;
   border-radius: 32px;
-  background-color: var(--color-white);
+  background-color: ${(props) => props.theme.white};
 `;
 
 export const StyledTh = styled.th`
   padding: 10px 0;
   font-size: 18px;
-  color: #4874c7;
+  color: ${(props) => props.theme.primaryDim};
   width: 292px;
 `;
 
@@ -26,21 +26,21 @@ export const StyledTd = styled.td`
   padding: 10px 0;
   text-align: center;
   width: 292px;
-  color: var(--color-bg);
+  color: ${(props) => props.theme.background };
 `;
 
 export const StyledTr = styled.tr`
   display: flex;
   justify-content: space-between;
   &:hover {
-    background-color: var(--color-primary-variant);
+    background-color: ${(props) => props.theme.primaryVariant};
     cursor: pointer;
   }
 `
 
 export const StyledThead = styled.thead`
   font-size: 20px;
-  color: #4874c7;
+  color: ${(props) => props.theme.primaryDim};
   font-weight: 700;
   box-shadow: rgb(31 31 31 / 15%) 0 4px 20px -2px;
 `;

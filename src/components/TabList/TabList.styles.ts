@@ -11,8 +11,8 @@ export const Tab = styled.button<{active: boolean}>`
   padding: 10px 60px;
   min-width: 200px;
   cursor: pointer;
-  background: var(--color-bg-variant);
-  color: var(--color-white);
+  background: ${(props) => props.theme.backgroundVariant};
+  color: ${(props) => props.theme.white};
   border: 0;
   outline: 0;
   opacity: 0.6;
@@ -20,5 +20,5 @@ export const Tab = styled.button<{active: boolean}>`
   &:first-of-type {
     margin-right: 2rem;
   }
-  ${({ active }) => active && `opacity: 1; outline: 2px orange solid`}
+  ${({ active, theme }) => active && `opacity: 1; outline: 2px ${theme.orange} solid`}
 `;

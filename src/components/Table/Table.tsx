@@ -2,11 +2,12 @@ import { FunctionComponent } from 'react';
 import { StyledTh, StyledTd, TableSection, StyledThead, StyledTr } from './Table.styles';
 import { ITableProps } from './Table.interfaces';
 import { TEXT } from '../../utils/Text';
-import { getPriceChange } from '../../utils/helpers/getPriceChange';
 import { IQuote } from '../../utils/interfaces';
+import { THEME } from '../../utils/theme';
+import { getPriceChange } from '../../utils/helpers';
 
 export const Table: FunctionComponent<ITableProps> = ({ data, selectedQuote }) => {
-
+  const { green, danger} = THEME;
   function handleQuotationClick(name: string) {
     selectedQuote(name);
   }
@@ -14,22 +15,22 @@ export const Table: FunctionComponent<ITableProps> = ({ data, selectedQuote }) =
   const renderQuotesChange = (high: number, markPrice: number) => {
     let priceChange = getPriceChange(high, markPrice);
     if (priceChange > 0) {
-      return <StyledTd style={{color: '#0ea600'}}>{`+${priceChange}%`}</StyledTd>;
+      return <StyledTd style={{color: green}}>{`+${priceChange}%`}</StyledTd>;
     }
     if (priceChange < 0) {
-      return <StyledTd style={{color: '#eb4d4b'}}>{`${priceChange}%`}</StyledTd>;
+      return <StyledTd style={{color: danger}}>{`${priceChange}%`}</StyledTd>;
     }
-    return <StyledTd>Без изменений</StyledTd>;
+    return <StyledTd>{TEXT.WITHOUT_CHANGE}</StyledTd>;
   }
 
   return (
     <TableSection>
       <StyledThead>
         <tr>
-          <StyledTh>Тикер</StyledTh>
-          <StyledTh>Последний курс</StyledTh>
-          <StyledTh>Максимальное значение (24ч.)</StyledTh>
-          <StyledTh>Изменение</StyledTh>
+          <StyledTh>{TEXT.TICKER}</StyledTh>
+          <StyledTh>{TEXT.LAST_COURSE}</StyledTh>
+          <StyledTh>{TEXT.MAX_PRICE}</StyledTh>
+          <StyledTh>{TEXT.CHANGE}</StyledTh>
         </tr>
       </StyledThead>
       <tbody>
@@ -40,9 +41,9 @@ export const Table: FunctionComponent<ITableProps> = ({ data, selectedQuote }) =
             style={{
               color:
                 markPrice > high
-                  ? '#0ea600'
+                  ? green
                   : markPrice && markPrice < high
-                    ? '#eb4d4b'
+                    ? danger
                     : ''
             }}
           >

@@ -44,7 +44,7 @@ export const Description = styled.p`
   text-align: center;
   margin: 10px auto;
   max-width: 60%;
-  color: var(--color-light);
+  color: ${(props) => props.theme.light};
   @media (max-width: 968px) {
     font-size: var(--small-fs);
   }

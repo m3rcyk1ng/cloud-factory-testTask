@@ -4,7 +4,7 @@ import logo from '../../assets/images/logo.svg';
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  border-bottom: 2px solid var(--color-white);
+  border-bottom: ${(props) => `2px solid ${props.theme.white}`};
 `
 
 export const HeaderWrapper = styled.div`
@@ -30,16 +30,16 @@ export const Logo = styled.div`
   }
 `
 
-export const StyledLink = styled(Link)<{activeTab: boolean}>`
+export const StyledLink = styled(Link)<{$activeTab: boolean}>`
   padding: -3px 10px;
   text-decoration: none;
   font-size: var(--large-fs);
-  color: ${(props) => (props.activeTab ? 'orange' : '#FFF')};
-  background: var(--color-bg-variant);
+  color: ${(props) => (props.$activeTab ? props.theme.orange : props.theme.white)};
+  background: ${(props) => props.theme.backgroundVariant};
   border-radius: 16px;
   align-items: start;
   font-weight: 700;
-  outline: ${(props) => (props.activeTab ? `2px orange solid` : undefined)};
+  outline: ${(props) => (props.$activeTab ? `2px ${props.theme.orange} solid` : undefined)};
   min-width: 240px;
   text-align: center;
   transition: .3s;

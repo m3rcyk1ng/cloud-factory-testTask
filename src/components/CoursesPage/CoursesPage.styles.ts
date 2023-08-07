@@ -43,7 +43,7 @@ export const MessageDialogTitle = styled.p`
 export const MessageDialogMessage = styled.p`
   font-size: var(--default-fs);
   margin: 0 auto 2rem;
-  color: var(--color-bg);
+  color: ${(props) => props.theme.background};
   @media (max-width: 968px) {
     font-size: var(--small-fs);
   }
@@ -51,14 +51,14 @@ export const MessageDialogMessage = styled.p`
 
 export const CloseBtn = styled.div`
   padding: 0.5rem 1rem;
-  color: var(--color-white);
-  background-color: var(--danger-color);
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.danger};
   border-radius: 0.5rem;
   user-select: none;
   transition: .3s;
   &:hover {
     cursor: pointer;
-    background-color: var(--danger-color-hover);
+    background-color: ${(props) => props.theme.dangerHover};
   }
 `;
 

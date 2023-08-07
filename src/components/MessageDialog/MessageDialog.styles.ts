@@ -7,8 +7,8 @@ export const MessageDialogContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: var(--color-white);
-  border: 1px solid black;
+  background-color: ${(props) => props.theme.white};
+  border: ${(props) => `1px solid ${props.theme.black}`};
   padding: 2rem;
   border-radius: 12px;
   width: 30rem;
@@ -22,7 +22,7 @@ export const MessageDialogContentWrapper = styled.div`
 export const MessageDialogTitle = styled.p`
   font-size: var(--large-fs);
   font-weight: 700;
-  color: var(--color-bg);
+  color: ${(props) => props.theme.background};
   margin: 0 auto 1rem;
   max-width: 60%;
   @media (max-width: 968px) {

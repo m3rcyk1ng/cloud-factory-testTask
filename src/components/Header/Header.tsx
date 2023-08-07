@@ -14,9 +14,9 @@ export const Header: FunctionComponent = () => {
   return (
     <HeaderContainer>
       <HeaderWrapper>
-        <StyledLink activeTab={pathname === '/main'} to="/main">{TEXT.HEADER_FIRST_TAB}</StyledLink>
-        <Logo/>
-        <StyledLink activeTab={pathname === '/courses'} to="/courses">{TEXT.HEADER_SECOND_TAB}</StyledLink>
+        <StyledLink $activeTab={pathname === '/main'} to="/main">{TEXT.HEADER_FIRST_TAB}</StyledLink>
+        <Logo />
+        <StyledLink $activeTab={pathname === '/courses'} to="/courses">{TEXT.HEADER_SECOND_TAB}</StyledLink>
       </HeaderWrapper>
     </HeaderContainer>
   );

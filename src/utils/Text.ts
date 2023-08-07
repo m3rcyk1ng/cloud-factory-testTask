@@ -14,4 +14,9 @@ export const TEXT = {
   MARKET_PRICE: "Цена на данный момент",
   HIGH_PRICE: "Максимальное значение",
   PRICE_CHANGE: "Изменение за сутки",
+  WITHOUT_CHANGE: "Без изменений",
+  TICKER: "Тикер",
+  LAST_COURSE: "Последний курс",
+  MAX_PRICE: "Максимальное значение (24ч.)",
+  CHANGE: "Изменение",
 };
