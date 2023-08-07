@@ -14,7 +14,7 @@ import {IQuote, QuoteName} from '../../utils/interfaces';
 import {TEXT} from '../../utils/Text';
 import MessageDialog from '../MessageDialog/MessageDialog';
 import AlertIcon from '../../assets/images/alert-circle.svg';
-import {getPriceChange} from '../../utils/getPriceChange';
+import {getPriceChange} from '../../utils/helpers/getPriceChange';
 
 export const CoursesPage: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState('BTC');

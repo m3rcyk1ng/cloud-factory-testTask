@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { StyledTh, StyledTd, TableSection, StyledThead, StyledTr } from './Table.styles';
 import { ITableProps } from './Table.interfaces';
 import { TEXT } from '../../utils/Text';
-import { getPriceChange } from '../../utils/getPriceChange';
+import { getPriceChange } from '../../utils/helpers/getPriceChange';
 import { IQuote } from '../../utils/interfaces';
 
 export const Table: FunctionComponent<ITableProps> = ({ data, selectedQuote }) => {
