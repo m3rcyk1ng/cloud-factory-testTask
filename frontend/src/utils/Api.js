@@ -1,3 +1,4 @@
+// Check ReadMe
 class MainApi {
   constructor(data) {
     this._url = data.url;
@@ -12,23 +13,27 @@ class MainApi {
   }
 
   getData() {
-    return fetch(`${this._url}/markets/ticker24h`, {
+    return fetch(`${this._url}`, {
       method: 'GET',
+      // credentials: 'include',
       headers: this._headers,
-      credentials: 'include',
     }).then(this._checkStatus);
   }
 
   getSecondData() {
-    return fetch(`${this._url}/markets/ticker24h`, {
+    return fetch(`${this._url}`, {
       method: 'GET',
+      // credentials: 'include',
       headers: this._headers,
-      credentials: 'include',
     }).then(this._checkStatus);
   }
 }
 
 export const mainApi = new MainApi({
-  url: 'https://api.poloniex.com',
+  url: 'http://localhost:3001/markets',
+  // url: 'https://api.poloniex.com/markets/ticker24h',
   credentials: 'includes',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
